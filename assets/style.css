@@ -44,6 +44,14 @@
     outline: none;
 }
 
+/* .search-input::placeholder {
+    color: rgba(255,255,255,.9);
+}
+
+.search-input::-ms-input-placeholder {
+    color: rgba(255,255,255,.9);
+} */
+
 .submit-button {
     background: none;
     border: none;
