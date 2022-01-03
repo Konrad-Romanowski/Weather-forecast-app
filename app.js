@@ -2,8 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// const fetch = require('node-fetch');
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -20,12 +19,13 @@ app.get('/',(req,res)=>{
 
 app.get('/weather/:cityName', async (req,res)=>{
     console.log(`Got request, city name: ${req.params.cityName}`);
-    
     const cityName = req.params.cityName;
 
-    const data = await fetch(`api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`);
-    const readableData = await data.JSON();
+    const fetchData = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=${cityName}&APPID=${API_KEY}`);
+    const readableData = await fetchData.json();
+
     console.log(readableData);
+
 
 });
 
