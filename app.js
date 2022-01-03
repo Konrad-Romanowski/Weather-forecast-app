@@ -18,15 +18,22 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/weather/:cityName', async (req,res)=>{
-    console.log(`Got request, city name: ${req.params.cityName}`);
     const cityName = req.params.cityName;
 
     const fetchData = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=${cityName}&APPID=${API_KEY}`);
     const readableData = await fetchData.json();
 
-    console.log(readableData);
+    const weatherData = {
+        cityName: readableData.name,
+        currentDate: readableData.dt,
+        currentTemp: readableData.main.temp,
+        currentMinTemp: readableData.main.temp_min,
+        currentMaxTemp: readableData.main.temp_max,
+        currentWeatherDescription: readableData.weather[0].description,
+        currentWeatherIcon: readableData.weather[0].icon
+    }
 
-
+    res.send(weatherData);
 });
 
 
