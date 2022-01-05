@@ -12,5 +12,5 @@ searchBtn.addEventListener('click',async e=>{
     const fetchData = await fetch(`/weather/${cityName}`);
     const weatherData = await fetchData.json();
 
-    console.log(weatherData);
+    populateTemplate(weatherData);
 });
