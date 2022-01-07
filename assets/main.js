@@ -2,12 +2,9 @@ const searchBtn = document.getElementById('submit-button');
 const cityNameInput = document.getElementById('search-input');
 let cityName = localStorage.getItem('cityName') || 'Warsaw';
 
-window.onload = async function (){
-    const weatherData = await getWeatherData(cityName);
-    populateTemplate(weatherData);
-}
+window.onload = updateWeatherData(cityName);
 
-searchBtn.addEventListener('click',async e=>{
+searchBtn.addEventListener('click', e =>{
     e.preventDefault();
 
     cityName = cityNameInput.value;
@@ -15,14 +12,12 @@ searchBtn.addEventListener('click',async e=>{
     cityNameInput.value = '';
     localStorage.setItem('cityName',cityName);
 
-    const weatherData = await getWeatherData(cityName);
-
-    populateTemplate(weatherData);
+    updateWeatherData(cityName);
 });
 
-async function getWeatherData(cityName) {
+async function updateWeatherData(cityName) {
     const fetchData = await fetch(`/weather/${cityName}`);
     const weatherData = await fetchData.json();
 
-    return weatherData;
+    populateTemplate(weatherData);
 }
