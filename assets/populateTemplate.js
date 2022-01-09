@@ -1,5 +1,5 @@
 function populateTemplate(weatherData) {
-    const {cityName,currentDate,currentTemp,currentMinTemp,currentMaxTemp,currentWeatherDescription,currentWeatherIcon} = weatherData;
+    const {cityName,currentDate,currentTemp,currentMinTemp,currentMaxTemp,currentWeatherDescription,currentWeatherIcon} = weatherData.data;
 
     document.getElementById('weather-city-name').innerText = cityName;
     document.getElementById('date').innerText = convertDate(currentDate);

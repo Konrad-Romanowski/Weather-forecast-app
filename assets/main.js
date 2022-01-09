@@ -2,22 +2,28 @@ const searchBtn = document.getElementById('submit-button');
 const cityNameInput = document.getElementById('search-input');
 let cityName = localStorage.getItem('cityName') || 'Warsaw';
 
-window.onload = updateWeatherData(cityName);
+window.onload = async function() {
+    const weatherData = await getWeatherData(cityName);
+    populateTemplate(weatherData);
+}
 
-searchBtn.addEventListener('click', e =>{
+searchBtn.addEventListener('click', async e =>{
     e.preventDefault();
 
     cityName = cityNameInput.value;
     if(cityName.length < 1) return;
     cityNameInput.value = '';
-    localStorage.setItem('cityName',cityName);
-
-    updateWeatherData(cityName);
+    
+    const weatherData = await getWeatherData(cityName);
+    if(weatherData.success) {
+        localStorage.setItem('cityName',cityName);
+        populateTemplate(weatherData);
+    }
 });
 
-async function updateWeatherData(cityName) {
+async function getWeatherData(cityName) {
     const fetchData = await fetch(`/weather/${cityName}`);
     const weatherData = await fetchData.json();
 
-    populateTemplate(weatherData);
+    return weatherData;
 }
