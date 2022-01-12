@@ -15,15 +15,15 @@
 }
 
 .weather {
-    height: 70vh;
-    width: 500px;
+    height: 560px;
+    width: 420px;
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     background-color: rgba(0,0,0,0.1);
-    border-radius: 10px;
+    border-radius: 14px;
 }
 
 .search-form {
@@ -43,14 +43,6 @@
 .search-input:focus {
     outline: none;
 }
-
-/* .search-input::placeholder {
-    color: rgba(255,255,255,.9);
-}
-
-.search-input::-ms-input-placeholder {
-    color: rgba(255,255,255,.9);
-} */
 
 .submit-button {
     background: none;
@@ -89,8 +81,24 @@
 .current-weather-icon {
     height: 100px;
     width: 100px;
+    margin: -8px 0;
 }
 
 .current-weather-temperature {
     font-size: 36px;
+}
+
+@media (max-height:560px) {
+    .background {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+
+.weather{
+    width: 100%;
+}
+
 }
