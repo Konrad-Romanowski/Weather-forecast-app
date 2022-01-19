@@ -1,4 +1,4 @@
-function convertDate(_date) {
+export default function convertDate(_date) {
     const date = new Date(_date*1000)
     const year = date.getFullYear();
     const month = getMonthName(date);

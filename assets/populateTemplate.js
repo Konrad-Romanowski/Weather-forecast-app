@@ -1,4 +1,6 @@
-function populateTemplate(weatherData) {
+import convertDate from "./convertDate.js";
+
+export default function populateTemplate(weatherData) {
     const {cityName,currentDate,currentTemp,currentMinTemp,currentMaxTemp,currentWeatherDescription,currentWeatherIcon} = weatherData.data;
 
     document.getElementById('weather-city-name').innerText = cityName;
