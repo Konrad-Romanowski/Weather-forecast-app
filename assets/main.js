@@ -2,6 +2,7 @@ const searchBtn = document.getElementById('submit-button');
 const cityNameInput = document.getElementById('search-input');
 let cityName = localStorage.getItem('cityName') || 'Warsaw';
 
+import getWeatherData from './getWeatherData.js';
 import populateTemplate from './populateTemplate.js';
 
 window.onload = async function() {
@@ -22,10 +23,3 @@ searchBtn.addEventListener('click', async e =>{
         populateTemplate(weatherData);
     }
 });
-
-async function getWeatherData(cityName) {
-    const fetchData = await fetch(`/weather/${cityName}`);
-    const weatherData = await fetchData.json();
-
-    return weatherData;
-}

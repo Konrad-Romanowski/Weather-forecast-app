@@ -7,7 +7,7 @@ const filterData = require('./filterData');
 const api_key = 'your api key here';
 const API_KEY = process.env.API_KEY || api_key;
 
-async function getWeatherData(cityName) {
+async function getWeatherDataFromAPI(cityName) {
     const fetchData = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=${cityName}&APPID=${API_KEY}`);
     const readableData = await fetchData.json();
 
@@ -24,4 +24,4 @@ async function getWeatherData(cityName) {
     return weatherData;
 }
 
-module.exports = getWeatherData
+module.exports = getWeatherDataFromAPI

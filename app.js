@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const getWeatherData = require('./getWeatherData');
+const getWeatherDataFromAPI = require('./getWeatherDataFromAPI');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -16,7 +16,7 @@ app.get('/',(req,res)=>{
 
 app.get('/weather/:cityName', async (req,res)=>{
     const cityName = req.params.cityName;
-    const weatherData = await getWeatherData(cityName);
+    const weatherData = await getWeatherDataFromAPI(cityName);
 
     res.send(weatherData);
 });
