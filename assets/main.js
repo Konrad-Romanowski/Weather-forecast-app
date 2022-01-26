@@ -4,10 +4,12 @@ let cityName = localStorage.getItem('cityName') || 'Warsaw';
 
 import getWeatherData from './getWeatherData.js';
 import populateTemplate from './populateTemplate.js';
+import updadeBrowserTab from './updateBrowserTab.js';
 
 window.onload = async function() {
     const weatherData = await getWeatherData(cityName);
     populateTemplate(weatherData);
+    updadeBrowserTab(weatherData);
 }
 
 searchBtn.addEventListener('click', async e =>{
@@ -21,5 +23,6 @@ searchBtn.addEventListener('click', async e =>{
     if(weatherData.success) {
         localStorage.setItem('cityName',cityName);
         populateTemplate(weatherData);
+        updadeBrowserTab(weatherData);
     }
 });
