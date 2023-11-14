@@ -2,16 +2,15 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const getWeatherDataFromAPI = require('./getWeatherDataFromAPI');
-
 const dotenv = require('dotenv');
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
-app.use('/public',express.static(path.join(__dirname,'assets')));
+app.use('/public',express.static(path.join(__dirname,'..','client')));
 
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname,'assets','index.html'));
+    res.sendFile(path.join(__dirname,'..','client','index.html'));
 });
 
 app.get('/weather/:cityName', async (req,res)=>{
