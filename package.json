@@ -2,9 +2,9 @@
   "name": "weather-forecast-app",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server/app.js",
   "scripts": {
-    "start": "nodemon app"
+    "dev": "nodemon app"
   },
   "keywords": [
     "weather",
